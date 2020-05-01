@@ -1,0 +1,19 @@
+*, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*Para que no se vea los bordes, y la fuente*/
+input, button {
+	border: none;
+	outline: none;
+	background: none;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+/*
+.tip {
+  font-size: 20px;
+  margin: 40px auto 50px;
+  text-align: center;
+}*/
