@@ -15,6 +15,7 @@ body {
 	height: 550px;
 	background: #fff;
 	margin: 0 auto 100px;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .form{
@@ -73,7 +74,7 @@ body {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.3);
 }
 
 .img__text {
@@ -132,7 +133,7 @@ body {
 	transform: translateX(0);
 }
 
-/*DIV de accion para deslizarce*/
+/*-----------------------DIV DESLIZANTE-----------------------*/
 .img__btn {
 	overflow: hidden;
 	z-index: 2;
@@ -181,6 +182,7 @@ body {
 	-webkit-transform: translateY(-72px);
 			transform: translateY(-72px);
 }
+/*------------------------------------------------------------*/
 
 .sign-up {
 	-webkit-transform: translate3d(-900px, 0, 0);
@@ -210,7 +212,7 @@ body {
 	-webkit-transform: translateY(72px);
 	transform: translateY(72px);
 }
-
+/*
 .fb-btn {
 	border: 2px solid #d3dae9;
 	color: #8fa1c7;
@@ -219,21 +221,4 @@ body {
 .fb-btn span {
 	font-weight: bold;
 	color: #455a81;
-}
-
-.icon-link {
-	position: absolute;
-	left: 5px;
-	bottom: 5px;
-	width: 32px;
-}
-
-.icon-link img {
-	width: 100%;
-	vertical-align: top;
-}
-
-.icon-link--twitter {
-	left: auto;
-	right: 5px;
-}
+}*/
