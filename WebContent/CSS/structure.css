@@ -41,3 +41,138 @@ body {
 	transition: -webkit-transform 1.2s ease-in-out;
 	transition: transform 1.2s ease-in-out;
 }
+.img {
+	overflow: hidden;
+	z-index: 2;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 260px;
+	height: 100%;
+	padding-top: 360px;
+}
+
+.img:before {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 900px;
+	height: 100%;
+	background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg");
+	background-size: cover;
+	-webkit-transition: -webkit-transform 1.2s ease-in-out;
+	transition: -webkit-transform 1.2s ease-in-out;
+	transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.img__text {
+	z-index: 2;
+	position: absolute;
+	left: 0;
+	top: 50px;
+	width: 100%;
+	padding: 0 20px;
+	text-align: center;
+	color: #fff;
+	-webkit-transition: -webkit-transform 1.2s ease-in-out;
+	/*transition: -webkit-transform 1.2s ease-in-out;*/
+	transition: transform 1.2s ease-in-out;
+	transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+}
+
+.img__text h2 {
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+
+.img__text p {
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.sign-in {
+	padding-top: 65px;
+	-webkit-transition-timing-function: ease-out;
+			transition-timing-function: ease-out;
+}
+
+.cont.s--signup .sub-cont {
+	-webkit-transform: translate3d(-640px, 0, 0);
+	transform: translate3d(-640px, 0, 0);
+}
+
+
+.cont.s--signup .img:before {
+	-webkit-transform: translate3d(640px, 0, 0);
+	transform: translate3d(640px, 0, 0);
+}
+.cont.s--signup .img__text.m--up {
+	-webkit-transform: translateX(520px);
+	transform: translateX(520px);
+}
+
+.img__text.m--in {
+	-webkit-transform: translateX(-520px);
+	transform: translateX(-520px);
+}
+
+.cont.s--signup .img__text.m--in {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+}
+
+/*DIV de accion para deslizarce*/
+.img__btn {
+	overflow: hidden;
+	z-index: 2;
+	position: relative;
+	width: 150px;
+	height: 36px;
+	margin: 0 auto;
+	background: transparent;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+.img__btn:after {
+	content: '';
+	z-index: 2;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: 2px solid #fff;
+	border-radius: 30px;
+}
+
+.img__btn span {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: -webkit-transform 1.2s;
+	transition: -webkit-transform 1.2s;
+	transition: transform 1.2s;
+	transition: transform 1.2s, -webkit-transform 1.2s;
+}
