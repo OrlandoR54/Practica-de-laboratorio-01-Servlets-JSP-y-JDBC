@@ -16,7 +16,6 @@ public class Usuario implements Serializable{
 	 * este caso hacia la base de datos
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id;
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -28,10 +27,9 @@ public class Usuario implements Serializable{
 		// Constructor obligatorio
 	}
 
-	public Usuario(int id, String cedula, String nombre, String apellido, String correo, String password,
+	public Usuario(String cedula, String nombre, String apellido, String correo, String password,
 			Telefono telefono) {
 		super();
-		this.id = id;
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -40,14 +38,6 @@ public class Usuario implements Serializable{
 		this.telefono = telefono;
 	}
 
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getCedula() {
 		return cedula;
@@ -100,7 +90,7 @@ public class Usuario implements Serializable{
 	// Método toString que permite describir a un objeto
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
+		return "Usuario [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
 				+ ", correo=" + correo + ", password=" + password + ", telefono=" + telefono + "]";
 	}	
 }
