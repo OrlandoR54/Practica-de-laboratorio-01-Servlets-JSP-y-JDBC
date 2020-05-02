@@ -45,7 +45,7 @@ public class Sesion extends HttpServlet {
 		
 		if (email.equals("orlandojrv@hotmail.com") && password.equals("123")) {
 			
-			if (session.isNew()) {
+			/*if (session.isNew()) {
 				out.print("<h2>Gracias por acceder al servidor</h2>");
 				session.setAttribute("accesos", 1);
 				//response.sendRedirect("Sesion.html");
@@ -61,7 +61,7 @@ public class Sesion extends HttpServlet {
 				session.setAttribute("usuario", email);
 				session.setAttribute("contrasena", password);
 				//response.sendRedirect("Sesion.html");
-			}
+			}*/
 		}else {
 			out.print("<h1>Usuario denegado</h2>");
 			out.println("<a href='index.html'>Iniciar Sesion</a></body></html>");
