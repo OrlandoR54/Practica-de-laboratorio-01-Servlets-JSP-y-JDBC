@@ -22,12 +22,14 @@ public class Usuario implements Serializable{
 	private String apellido;
 	private String correo;
 	private String password;
+	private Telefono telefono;
 	
 	public Usuario() {
 		// Constructor obligatorio
 	}
 
-	public Usuario(int id, String cedula, String nombre, String apellido, String correo, String password) {
+	public Usuario(int id, String cedula, String nombre, String apellido, String correo, String password,
+			Telefono telefono) {
 		super();
 		this.id = id;
 		this.cedula = cedula;
@@ -35,7 +37,9 @@ public class Usuario implements Serializable{
 		this.apellido = apellido;
 		this.correo = correo;
 		this.password = password;
+		this.telefono = telefono;
 	}
+
 
 	public int getId() {
 		return id;
@@ -84,4 +88,19 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Telefono getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(Telefono telefono) {
+		this.telefono = telefono;
+	}
+
+	// Método toString que permite describir a un objeto
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", correo=" + correo + ", password=" + password + ", telefono=" + telefono + "]";
+	}	
 }
