@@ -11,7 +11,10 @@ import ec.edu.ups.modelo.Telefono;
  * @author Orlando Real
  *
  */
-public interface TelefonoDAO extends GenericDAO<Telefono, Integer>{
+public interface TelefonoDAO extends GenericDAO<Telefono, String>{
 
 	public abstract Set<Telefono> findByUserId(String cedulaUser);
+	
+	public abstract Set<Telefono> findByEmailId(String correo);
+	
 }
