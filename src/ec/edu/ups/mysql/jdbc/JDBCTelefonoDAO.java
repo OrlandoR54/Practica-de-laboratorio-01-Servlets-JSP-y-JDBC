@@ -12,11 +12,12 @@ import java.util.Set;
 import ec.edu.ups.dao.TelefonoDAO;
 import ec.edu.ups.modelo.Telefono;
 
+
 /**
  * @author Orlando Real
  *
  */
-public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, Integer> implements TelefonoDAO{
+public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements TelefonoDAO{
 
 	@Override
 	public void createTable() {
@@ -29,27 +30,6 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, Integer> implement
 		// TODO Auto-generated method stub
 		conexionDos.update("INSERT Telefono VALUES (" + product.getId() + ", " + product.getAmount() + ", '"
 				+ telefono.getDescription() + "', " + product.getShoppingBasket().getId() + ")");
-	}
-
-	@Override
-	public Telefono read(Integer id) {
-		// TODO Auto-generated method stub
-		Telefono telefono = null;
-		ResultSet rsTelefono = conexionUno.query("SELECT * FROM Telefono WHERE id=" + id);
-		try {
-			if (rsTelefono != null && rsTelefono.next()) {
-				telefono = new Telefono(rsTelefono.getInt("id"), rsTelefono.getInt("amount"), rsTelefono.getString("description"));
-				ResultSet rsShoppingBasket = conexionDos
-						.query("SELECT * FROM Shopping_Basket WHERE id=" + rsTelefono.getInt("shopping_basket_id"));
-
-			}
-		} catch (SQLException e) {
-			System.out.println(">>>WARNING (JDBCTelefonoDAO:read): " + e.getMessage());
-		}
-		if (telefono == null) {
-			return null;
-		}
-		return telefono;
 	}
 
 	@Override
@@ -96,6 +76,33 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, Integer> implement
 
 	@Override
 	public Set<Telefono> findByUserId(String cedulaUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Telefono read(String userID) {
+		// TODO Auto-generated method stub
+		Telefono telefono = null;
+		ResultSet rsTelefono = conexionUno.query("SELECT * FROM Telefono WHERE id=" + userID);
+		try {
+			if (rsTelefono != null && rsTelefono.next()) {
+				telefono = new Telefono(rsTelefono.getInt("userID"), rsTelefono.getInt("amount"), rsTelefono.getString("description"));
+				ResultSet rsShoppingBasket = conexionDos
+						.query("SELECT * FROM Shopping_Basket WHERE id=" + rsTelefono.getInt("shopping_basket_id"));
+
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCTelefonoDAO:read): " + e.getMessage());
+		}
+		if (telefono == null) {
+			return null;
+		}
+		return telefono;
+	}
+
+	@Override
+	public Set<Telefono> findByEmailId(String correo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
