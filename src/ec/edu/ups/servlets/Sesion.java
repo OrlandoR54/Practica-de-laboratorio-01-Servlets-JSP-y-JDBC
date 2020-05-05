@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ec.edu.ups.modelo.Usuario;
+
 /**
  * Servlet implementation class Sesion
  */
@@ -43,25 +45,26 @@ public class Sesion extends HttpServlet {
 		password = request.getParameter("pass");
 		HttpSession session = request.getSession();
 		
+		Usuario usr = new Usuario();
+		
 		if (email.equals("orlandojrv@hotmail.com") && password.equals("123")) {
-			
-			/*if (session.isNew()) {
+			out.print("<h1>Prueba</h1>");
+			if (session.isNew()) {
 				out.print("<h2>Gracias por acceder al servidor</h2>");
 				session.setAttribute("accesos", 1);
 				//response.sendRedirect("Sesion.html");
 			} else {
-				out.println("<h2>Gracias por volver" + email + "</h2>");
+				out.println("<h2>Gracias por volver " + email + "</h2>");
 				out.println("<p>Identificador de sesion: " + session.getId() + "</p>");
 				out.println("<p>Fecha de creacion: " + new Date(session.getCreationTime()) + "</p>");
 				out.println("<p>Fecha de ultimo acceso: " + new Date(session.getLastAccessedTime()) + "</p>");
-				
-				out.println("<p>Accesos realizados: " + num + "</p>");
-				session.setAttribute("accesos", num + 1);
 				num = (Integer) session.getAttribute("accesos");
+				out.println("<p>Accesos realizados: " + num + "</p>");
+				session.setAttribute("accesos", num + 1);		
 				session.setAttribute("usuario", email);
 				session.setAttribute("contrasena", password);
 				//response.sendRedirect("Sesion.html");
-			}*/
+			}
 		}else {
 			out.print("<h1>Usuario denegado</h2>");
 			out.println("<a href='index.html'>Iniciar Sesion</a></body></html>");
