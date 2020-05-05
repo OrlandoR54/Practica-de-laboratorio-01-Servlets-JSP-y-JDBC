@@ -16,7 +16,6 @@ import ec.edu.ups.modelo.Usuario;
  * 
  * @author Orlando Real
  *
- *
  */
 public interface UsuarioDAO extends GenericDAO<Usuario, String>{
 
