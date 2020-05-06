@@ -13,6 +13,7 @@ public class Telefono implements Serializable {
 	private String numero;
 	private String tipo;
 	private String operadora;
+	private Usuario usuario;
 
 	public Telefono() {
 		// Constructor obligatorio
@@ -57,11 +58,20 @@ public class Telefono implements Serializable {
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
 	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	// Método toString que permite describir a un objeto
 	@Override
 	public String toString() {
-		return "Telefono [id=" + id + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora + "]";
+		return "Telefono [id=" + id + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora
+				+ ", usuario=" + usuario + "]";
 	}
 
 }
