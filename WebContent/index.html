@@ -3,65 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Agenda Virtual</title>
-<link rel="stylesheet" href="CSS/structure.css">
-<link rel="stylesheet" href="CSS/styles.css">
+<!-- <link rel="stylesheet" href="CSS/structure.css">  -->
+<link rel="stylesheet" href="CSS/indexStyle.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	
-	<div class="cont">
-		<div class="form sign-in">
-			<h2>Bienvenido</h2>
-			<form action="Sesion" method="post">	
-				<label> <span>Email</span> <input type="email" name="usr" placeholder="jaime@ejemplo.com"/></label> 
-				<label> <span>Contraseña</span> <input type="password" name="pass" /></label>
-				<p class="olvido-pass">Olvido la Contraseña?</p>
-				<button type="submit" class="submit">Ingresar</button>
-				<!-- <button type="button" class="fb-btn">Ingresa con <span>facebook</span></button> -->
-			</form>
-		</div>
-		<div class="sub-cont">
-			<div class="img">
-				<div class="img__text m--up">
-					<h2>Eres Nuevo?</h2>
-					<p>Registrate y descubre nuevas oportunidades!</p>
+	<div class="container">
+		<nav class="nav-main">
+		<img alt="" src="IMG/directorio.png">
+			<ul>
+				<div class="titulo" id="titulo">
+					<h1>Metflix</h1>
 				</div>
-				<div class="img__text m--in">
-					<h2>Ya eres miembro?</h2>
-					<p>Si ya tienes una cuenta, solo ingresa!</p>
+			</ul>
+			<ul>
+				<div class="content">
+					<div class="animacion" id="animacion">
+						
+
+						<div class="box">
+							<div class="container-4">
+								<input type="search" id="search" onkeyup="url()"
+									placeholder="Buscar..." />
+								<button type="submit" class="icon" onclick="apiCall(1)">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+
 				</div>
-				<div class="img__btn">
-					<span class="m--up">Registrarse</span> 
-					<span class="m--in">Ingresar</span>
-				</div>
-			</div>
-			<div class="form sign-up">
-				<h2>Hora de sentirse en casa</h2>
-				<label> 
-					<span>Nombre</span> 
-					<input type="text" />
-				</label>
-				<label> 
-					<span>Apellido</span> 
-					<input type="text" />
-				</label>
-				<label> 
-					<span>Cedula</span> 
-					<input type="text" />
-				</label>  
-				<label> 
-					<span>Email</span> 
-					<input type="email" />
-				</label> 
-				<label> 
-					<span>Contraseña</span> 
-					<input type="password" />
-				</label>
-				<button type="button" class="submit">Registrarse</button>
-				<!-- <button type="button" class="fb-btn">Registrarse con <span>facebook</span> -->
-				</button>
-			</div>
-		</div>
+			</ul>
+		</nav>
 	</div>
-<script type="text/javascript" src="JAVASCRIPT/script.js"></script>
 </body>
 </html>
