@@ -21,6 +21,6 @@ import ec.edu.ups.dao.GenericDAO;
  */
 public abstract class JDBCGenericDAO<T, ID> implements GenericDAO<T, ID> {
 
-	protected Conexion conexionUno = Conexion.getJDBC1();
-	protected Conexion conexionDos = Conexion.getJDBC2();
+	protected ContextJDBC conexionUno = ContextJDBC.getJDBC1();
+	protected ContextJDBC conexionDos = ContextJDBC.getJDBC2();
 }
