@@ -3,6 +3,7 @@
  */
 package ec.edu.ups.dao;
 
+
 import java.util.Set;
 
 import ec.edu.ups.modelo.Telefono;
@@ -13,8 +14,12 @@ import ec.edu.ups.modelo.Telefono;
  */
 public interface TelefonoDAO extends GenericDAO<Telefono, String>{
 
-	public abstract Set<Telefono> findByUserId(String cedulaUser);
+	/*
+	 * Metodo propio de la interface telefono DAO para obtener un telefono mediante el numero de cedula
+	 * 
+	 * */
+	public abstract Set<Telefono> findByUserId(String cedula);
 	
-	public abstract Set<Telefono> findByEmailId(String correo);
+	public abstract Telefono findbyTelefonoId(int id_tel);
 	
 }
