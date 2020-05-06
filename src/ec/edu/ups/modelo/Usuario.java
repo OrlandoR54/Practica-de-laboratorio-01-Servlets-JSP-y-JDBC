@@ -4,6 +4,8 @@
 package ec.edu.ups.modelo;
 
 import java.io.Serializable;
+import java.util.Set;
+
 
 /**
  * @author Orlando Real
@@ -21,21 +23,19 @@ public class Usuario implements Serializable{
 	private String apellido;
 	private String correo;
 	private String password;
-	private Telefono telefono;
+	private Set<Telefono> telefonos;
 	
 	public Usuario() {
 		// Constructor obligatorio
 	}
 
-	public Usuario(String cedula, String nombre, String apellido, String correo, String password,
-			Telefono telefono) {
+	public Usuario(String cedula, String nombre, String apellido, String correo, String password) {
 		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
 		this.password = password;
-		this.telefono = telefono;
 	}
 
 
@@ -79,18 +79,18 @@ public class Usuario implements Serializable{
 		this.password = password;
 	}
 
-	public Telefono getTelefono() {
-		return telefono;
+	public Set<Telefono> getTelefonos() {
+		return telefonos;
 	}
 
-	public void setTelefono(Telefono telefono) {
-		this.telefono = telefono;
+	public void setTelefonos(Set<Telefono> telefonos) {
+		this.telefonos = telefonos;
 	}
 
 	// Método toString que permite describir a un objeto
 	@Override
 	public String toString() {
-		return "Usuario [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", correo=" + correo + ", password=" + password + ", telefono=" + telefono + "]";
-	}	
+		return "Usuario [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo
+				+ ", password=" + password + ", telefonos=" + telefonos + "]";
+	}
 }
