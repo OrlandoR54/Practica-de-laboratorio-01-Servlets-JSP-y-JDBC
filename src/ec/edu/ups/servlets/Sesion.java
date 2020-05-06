@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.modelo.Usuario;
 
 /**
@@ -45,7 +47,10 @@ public class Sesion extends HttpServlet {
 		password = request.getParameter("pass");
 		HttpSession session = request.getSession();
 		
-		Usuario usr = new Usuario();
+		
+		UsuarioDAO usrDAO = DAOFactory.getFactory().getUserDAO();
+		
+		//usrDAO.read(id)
 		
 		if (email.equals("orlandojrv@hotmail.com") && password.equals("123")) {
 			out.print("<h1>Prueba</h1>");
