@@ -47,12 +47,13 @@
 
 
 		<div id="selectorOperadora">
-			<label for="operadora">Operadora: </label> <select id="operadora"
-				name="operadora">
-				<option value="cnt">CNT</option>
-				<option value="claro">CLARO</option>
-				<option value="tuenti">TUENTI</option>
+			<label for="operadora">Operadora: </label> 
+			<select id="operadora" name="operadora">
 				<option value="movistar">MOVISTAR</option>
+				<option value="claro">CLARO</option>
+				<option value="cnt">CNT</option>
+				<option value="tuenti">TUENTI</option>
+				
 			</select>
 		</div>
 		<br>
