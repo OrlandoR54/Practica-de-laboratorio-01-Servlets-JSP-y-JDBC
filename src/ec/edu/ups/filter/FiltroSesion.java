@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FiltroSesion
  */
-@WebFilter("/Sesion")
+@WebFilter("/FiltroSesion")
 public class FiltroSesion implements Filter {
 
 	/**
@@ -59,11 +59,12 @@ public class FiltroSesion implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession sesion = req.getSession();
 
-		System.out.println("Entra filtroSesion: " + sesion);
+		System.out.println("Entra filtroSesion: " + sesion.getAttribute("sesionID"));
+		System.out.println("Entra filtroSesion 2: " + sesion.getId());
 		if (String.valueOf(sesion.getAttribute("sesionID")).equals(String.valueOf(sesion.getId()))) {
-			System.out.println("entra al FiltroSesion");
+			System.out.println("entra a la validacion");
 			
-			//res.sendRedirect("Private/SesionUser.jsp");
+			res.sendRedirect("Private/SesionUser.jsp");
 			chain.doFilter(request, response);
 		} else {
 			// System.out.println("redirect login .....");
