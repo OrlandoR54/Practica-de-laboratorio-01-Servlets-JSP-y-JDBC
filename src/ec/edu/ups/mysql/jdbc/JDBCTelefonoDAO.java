@@ -28,16 +28,24 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 	@Override
 	public void createTable() {
 		// TODO Auto-generated method stub
-		
+		conexionDos.update("CREATE TABLE IF NOT EXISTS telefono ("
+                + "	tel_codigo INT NOT NULL AUTO_INCREMENT,"
+                + "	tel_numero VARCHAR(20),"
+                + "	tel_tipo  VARCHAR(50),"
+                + "	tel_operadora VARCHAR(50),"
+                + "	usu_cedula VARCHAR(10) NOT NULL,"
+                + "	PRIMARY KEY (tel_codigo),"
+                + "	FOREIGN KEY (usu_cedula) REFERENCES usuario(usu_cedula)"
+                + ");");
 	}
 
 	/***
 	 * Se inserta el telefono con la clave foranea incluida, la cual es el numero de cedula del usuario
 	 */
 	@Override
-	public void create(Telefono telefono) {
+	public boolean create(Telefono telefono) {
 		// TODO Auto-generated method stub
-		conexionUno.update("INSERT INTO Telefono  ('tel_numero', 'tel_tipo', 'tel_operadora', 'usu_cedula')" + 
+		return conexionUno.update("INSERT INTO Telefono  (tel_numero, tel_tipo, tel_operadora, usu_cedula)" + 
 				"VALUES ( '" + telefono.getNumero() + "', '"+ telefono.getTipo() + "', '" + telefono.getOperadora() +"','"+telefono.getUsuario().getCedula() + "');");
 	}
 
@@ -94,7 +102,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 	public Set<Telefono> findByUserId(String cedulaUser) {
 		// TODO Auto-generated method stub
 		Set<Telefono> list = new HashSet<Telefono>();
-		ResultSet rsTelefono = conexionDos.query("SELECT * FROM telefono WHERE usu_cedula='" + cedulaUser + "';");
+		ResultSet rsTelefono = conexionUno.query("SELECT * FROM telefono WHERE usu_cedula='" + cedulaUser + "';");
 		try {
 			while (rsTelefono.next()) {
 				Telefono telefono = new Telefono(rsTelefono.getInt("tel_codigo"),rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"),
