@@ -15,9 +15,6 @@ import java.sql.Statement;
  */
 public class ContextJDBC {
 
-	Connection conexion = null;
-	Statement sentencia = null;
-	ResultSet result = null;
 	
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/agetelfdb";
@@ -25,20 +22,24 @@ public class ContextJDBC {
 	private static final String PASS = "root";
 	private static ContextJDBC jdbc1 = null;
 	private static ContextJDBC jdbc2 = null;
+	private Statement statement = null;
 	
 	public ContextJDBC() {
 		this.connect();
 	}
 	
 	public void connect() {
+		System.out.println("Muestra " + DRIVER);
 		try {
 			Class.forName(DRIVER);
-			this.conexion = DriverManager.getConnection(URL, USER, PASS);
-			this.sentencia = conexion.createStatement();
+			Connection connection = DriverManager.getConnection(URL, USER, PASS);
+			System.out.println("Conectando " + connection);
+			this.statement = connection.createStatement();
+			System.out.println("Se conecto");
 		} catch (ClassNotFoundException e){
-			System.err.println("Imposible cargar el driver " + e.getMessage());
+			System.out.println(">>>WARNING (JDBC:connect)...problemas con el driver: " + e.getMessage());
 		} catch (SQLException e) {
-			System.err.println("Imposible conectar " + e.getMessage());
+			System.out.println("Imposible conectar " + e.getMessage());
 		}
 	}
 	
@@ -50,7 +51,8 @@ public class ContextJDBC {
 	 */
 	public ResultSet query(String sql) {
 		try {
-			return this.sentencia.executeQuery(sql);
+			System.out.println("Prueba con contextJDBC: " + sql);
+			return this.statement.executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBC:query): ---" + sql + "---" + e);
 		}
@@ -66,7 +68,7 @@ public class ContextJDBC {
 	 */
 	public boolean update(String sql) {
 		try {
-			this.sentencia.executeUpdate(sql);
+			this.statement.executeUpdate(sql);
 			return true;
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBC:update)... actualizacion: ---" + sql + "---" + e);
@@ -90,6 +92,7 @@ public class ContextJDBC {
 		}
 		return jdbc1;
 	}
+
 	
 	/**
 	 * Método getJDBC.
@@ -104,34 +107,7 @@ public class ContextJDBC {
 		if (jdbc2 == null) {
 			jdbc2 = new ContextJDBC();
 		}
-		return jdbc1;
+		return jdbc2;
 	}
 	
-	/*
-	try {
-		sentencia.executeUpdate("DROP TABLE IF EXISTS tabla1");
-		sentencia.executeUpdate("CREATE TABLE tabla1 (id1 INT PRIMARY KEY, nombre CHAR(20) DEFAULT '-')");
-	} catch (SQLException e) {
-		// TODO: handle exception
-		System.out.println("Creacion de tabla fallida" + e.getMessage());
-	}
-	try {
-		sentencia.executeUpdate("INSERT tabla1 (id1) VALUES (3)");
-		sentencia.executeUpdate("INSERT tabla1 VALUES (4,'Jesus')");
-		sentencia.executeUpdate("INSERT tabla1 VALUES (5,'Juan')");
-	} catch (SQLException e) {
-		// TODO: handle exception
-		System.out.println("INteraccion de datos de tabla fallida: " +e.getMessage());
-	}
-	try {
-		result = sentencia.executeQuery("SELECT * FROM tabla1");
-		while (result.next()) {
-			System.out.println("id1: " + result.getLong("id1") + ", nombre: " + result.getString("nombre"));
-			
-		}
-	} catch (SQLException e) {
-		// TODO: handle exception
-		System.out.println("Consulta Fallida: " + e.getMessage());
-	}
-*/
 }
