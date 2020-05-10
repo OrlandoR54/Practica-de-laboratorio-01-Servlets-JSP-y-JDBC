@@ -2,40 +2,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Agenda Virtual</title>
-<!-- <link rel="stylesheet" href="CSS/structure.css">  -->
-<link rel="stylesheet" href="CSS/indexStyle.css">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/3f81fb8d3b.js" ></script>
+<link rel="stylesheet" href="CSS/indexStyle.css">
 </head>
 <body>
-	<div class="container">
-		<nav class="nav-main">
-		<img alt="" src="IMG/directorio.png">
-			<ul>
-				<div class="titulo" id="titulo">
-					<h1>Metflix</h1>
-				</div>
-			</ul>
-			<ul>
-				<div class="content">
-					<div class="animacion" id="animacion">
-						
-
-						<div class="box">
-							<div class="container-4">
-								<input type="search" id="search" onkeyup="url()"
-									placeholder="Buscar..." />
-								<button type="submit" class="icon" onclick="apiCall(1)">
-									<i class="fa fa-search"></i>
-								</button>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+				</button>
+				<img class="logo" src="IMG/directorio.png">
+				<a class="navbar-brand" href="#"> Agenda Telefonica</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Projects</a></li>
+					<li>
+						<div class="content">
+							<div class="animacion" id="animacion">
+								<div class="box">
+									<div class="container-4">
+										<input type="search" id="search" onkeyup="url()" placeholder="Buscar..." />
+										<button type="submit" class="icon" onclick="apiCall(1)">
+											<i class="fa fa-search"></i>
+										</button>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-
-				</div>
-			</ul>
-		</nav>
-	</div>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="Public/HTML/inicioSesion.html"><span class="glyphicon glyphicon-log-in"></span>Iniciar Sesion</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </body>
 </html>
