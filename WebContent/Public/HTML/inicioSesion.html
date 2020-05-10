@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../../CSS/structure.css">
+<link rel="stylesheet" href="../../CSS/styles.css">
+</head>
+<body>
+	<div class="cont">
+		<div class="form sign-in">
+			<h2>Bienvenido</h2>
+			<form action="../../Sesion" method="post">
+				<label> 
+					<span>Email</span> 
+					<input type="email" name="usr" placeholder="jaime@ejemplo.com" />
+				</label> 
+				<label> 
+					<span>Contraseña</span>
+					<input type="password" name="pass" />
+				</label>
+				<!--  <p class="olvido-pass">Olvido la Contraseña?</p>-->
+				<button type="submit" class="submit">Ingresar</button>
+				<a href="../../index.html" class="fb-btn">Regresar a <span>Inicio</span></a>
+			</form>
+		</div>
+		<div class="sub-cont">
+			<div class="img">
+				<div class="img__text m--up">
+					<h2>Eres Nuevo?</h2>
+					<p>Registrate y descubre nuevas oportunidades!</p>
+				</div>
+				<div class="img__text m--in">
+					<h2>Ya eres miembro?</h2>
+					<p>Si ya tienes una cuenta, solo ingresa!</p>
+				</div>
+				<div class="img__btn">
+					<span class="m--up">Registrarse</span> <span class="m--in">Ingresar</span>
+				</div>
+			</div>
+			<div class="form sign-up">
+				<h2>Hora de sentirse en casa</h2>
+				<form action="../../RegistrarUser" method="post">
+					<label> 
+						<span>Nombre</span> 
+						<input type="text" name="names" placeholder="Jaime" />
+					</label> 
+					<label> 
+						<span>Apellido</span> 
+						<input type="text" name="lastnames" placeholder="Ramirez" />
+					</label> 
+					<label> 
+						<span>Cedula</span> 
+						<input type="text" name="id" maxlength="10" placeholder="0105834209" />
+					</label> 
+					<label> 
+						<span>Email</span> 
+						<input type="email" name="email" placeholder="jaime@ejemplo.com" />
+					</label> 
+					<label> 
+						<span>Contraseña</span> 
+						<input type="password" name="password" placeholder="contraseña" />
+					</label>
+					<button type="submit" class="submit">Registrarse</button>
+					<!-- <button type="button" class="fb-btn">Regresar a <span>Inicio</span> </button> -->
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../JAVASCRIPT/script.js"></script>
+</body>
+</html>
