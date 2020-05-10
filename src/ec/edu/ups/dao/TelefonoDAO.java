@@ -20,6 +20,6 @@ public interface TelefonoDAO extends GenericDAO<Telefono, String>{
 	 * */
 	public abstract Set<Telefono> findByUserId(String cedula);
 	
-	public abstract Telefono findbyTelefonoId(int id_tel);
+	public abstract Telefono findbyTelefonoId(int tel_codigo);
 	
 }
