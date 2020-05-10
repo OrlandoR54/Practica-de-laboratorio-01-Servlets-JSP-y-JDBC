@@ -20,7 +20,7 @@ import ec.edu.ups.modelo.Usuario;
  *
  */
 public interface UsuarioDAO extends GenericDAO<Usuario, String>{
-	//public abstract Usuario findUser(String correo, String pass);
-    //public abstract List<Usuario> findByIdOrMail(String context);
+	public abstract Usuario findUser(String correo, String pass);
+    public abstract List<Usuario> findByIdOrMail(String context);
     public Usuario findByCorreo(String correo);
 }
