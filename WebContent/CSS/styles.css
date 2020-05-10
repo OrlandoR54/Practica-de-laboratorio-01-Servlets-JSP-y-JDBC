@@ -78,3 +78,29 @@ button {
 	color: #cfcfcf;
 	cursor: help;
 }
+
+/*BOTONES REGRESAR*/
+
+.fb-btn {
+	border: 2px solid #d3dae9;
+	color: #8fa1c7;
+	border: dotted;
+	text-decoration: none;
+}
+
+.fb-btn span {
+	font-weight: bold;
+	color: #455a81;
+}
+
+/*--------------ENLACE--------------*/
+a {
+	display: block;
+	margin: 0 auto;
+	width: 260px;
+	height: 36px;
+	border-radius: 30px;
+	font-size: 15px;
+	padding-left: 68px;
+	padding-top: 7px;
+}
