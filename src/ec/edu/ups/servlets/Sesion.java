@@ -3,7 +3,9 @@ package ec.edu.ups.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,8 @@ import ec.edu.ups.modelo.Usuario;
 @WebServlet("/Sesion")
 public class Sesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	UsuarioDAO userDAO;
+	Usuario usuario;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,6 +32,8 @@ public class Sesion extends HttpServlet {
     public Sesion() {
         super();
         // TODO Auto-generated constructor stub
+        userDAO = DAOFactory.getDAOFactory().getUserDAO();
+        usuario = new Usuario();
     }
 
 	/**
@@ -35,23 +41,11 @@ public class Sesion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String email = "";
-		String password = "";
-
-		int num = 0;
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-
-		out.println("<html><head><meta charset='UTF-8'><title>Sesion</title></head><body>");
-		email = request.getParameter("usr").toLowerCase();
-		password = request.getParameter("pass");
-		HttpSession session = request.getSession();
+	
 		
-		
-		UsuarioDAO usrDAO = DAOFactory.getFactory().getUserDAO();
-		
-		//usrDAO.read(id)
-		
+		 RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+	        dispatcher.forward(request, response);
+		/*
 		if (email.equals("orlandojrv@hotmail.com") && password.equals("123")) {
 			out.print("<h1>Prueba</h1>");
 			if (session.isNew()) {
@@ -73,8 +67,8 @@ public class Sesion extends HttpServlet {
 		}else {
 			out.print("<h1>Usuario denegado</h2>");
 			out.println("<a href='index.html'>Iniciar Sesion</a></body></html>");
-		}
-		out.println("</body></html>");
+		}*/
+		//out.println("</body></html>");
 	}
 
 	/**
@@ -82,7 +76,59 @@ public class Sesion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+		String email = "";
+		String password = "";
+		
+		email = request.getParameter("usr");
+		password = request.getParameter("pass");
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		if(email instanceof String){
+	        System.out.println("Email: Es de tipo String");
+	    }else{
+	        System.out.println("No es de tipo String");
+	    }
+		
+		if(password instanceof String){
+	        System.out.println("Password: Es de tipo String");
+	    }else{
+	        System.out.println("No es de tipo String");
+	    }
+		
+		if (email == "" && password == "") {
+			System.out.println("Input vacios");
+			response.sendRedirect("Public/HTML/inicioSesion.html");
+		} else {
+			usuario = userDAO.findUser(email, password);
+			System.out.println("Sesion " + usuario);
+			
+			if (usuario != null) {
+	            System.out.println("usuario encontrado");
+	            HttpSession session = request.getSession(true);  //El usuario a iniciado sesion
+	            //request.getSession().setAttribute("iniciado", session);
+	            System.out.println("Sesion iniciada con id " + request.getSession().getId());
+	            session.setAttribute("sesionID", String.valueOf(session.getId()));
+	            session.setAttribute("userID", usuario.getCedula());
+	            Date firstSession = new Date(session.getCreationTime());
+	            Date lastSession = new Date(session.getLastAccessedTime());
+	            System.out.println("Fecha de creacion: " + firstSession);
+				System.out.println("Fecha de ultimo acceso: " + lastSession);
+				session.setAttribute("usuario", usuario);
+	            
+	            request.getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
+	            
+	        }else{
+	        	System.out.println("No encontrado");
+	        	out.println("<script type='text/javascript'>");
+	        	out.println("alert('Usuario o contraseña incorrecta');");
+	        	out.println("location='/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/Public/HTML/inicioSesion.html';");
+	        	out.println("</script>");
+	            //response.sendRedirect("/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/index.html");
+	        }     
+		}
+		
 	}
-
 }
