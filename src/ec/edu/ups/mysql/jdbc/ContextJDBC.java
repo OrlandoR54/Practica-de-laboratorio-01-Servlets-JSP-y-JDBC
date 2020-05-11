@@ -51,7 +51,7 @@ public class ContextJDBC {
 	 */
 	public ResultSet query(String sql) {
 		try {
-			System.out.println("Prueba con contextJDBC: " + sql);
+			System.out.println("Prueba con contextJDBC, 'SELECT': " + sql);
 			return this.statement.executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBC:query): ---" + sql + "---" + e);
@@ -68,6 +68,7 @@ public class ContextJDBC {
 	 */
 	public boolean update(String sql) {
 		try {
+			System.out.println("Prueba con contextJDBC, 'Insert'" + sql);
 			this.statement.executeUpdate(sql);
 			return true;
 		} catch (SQLException e) {
