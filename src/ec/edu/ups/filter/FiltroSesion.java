@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FiltroSesion
  */
-@WebFilter("/FiltroSesion")
+@WebFilter(urlPatterns = {"/Private/*"})
 public class FiltroSesion implements Filter {
 
 	/**
@@ -40,36 +40,17 @@ public class FiltroSesion implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 
-		HttpSession session = ((HttpServletRequest) request).getSession();
-		// session.invalidate();
-		/*
-		 * session.removeAttribute("usuario"); session.removeAttribute("contrasena");
-		 */
-	
-		/*if (session.getAttribute("iniciado") != null) {
-			System.out.println("EL FILTRO CONSEDE EL ACCESO");
+		HttpServletRequest reqHttp = (HttpServletRequest)request;
+		HttpSession session = reqHttp.getSession();
+		System.out.println("Entra filtroSesion: " + session.getAttribute("sesionID"));
+		System.out.println("Entra filtroSesion 2: " + session.getId());
+		if (session.getAttribute("iniciado") !=null) {
+			System.out.println("entra a la validacion de FILTRO");
 			chain.doFilter(request, response);
-			request.getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
-		} else {
-			System.out.println("No inicio sesion");
-			// ((HttpServletResponse)response).sendRedirect("/publica/login.jsp");
-		}*/
-
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
-		HttpSession sesion = req.getSession();
-
-		System.out.println("Entra filtroSesion: " + sesion.getAttribute("sesionID"));
-		System.out.println("Entra filtroSesion 2: " + sesion.getId());
-		if (String.valueOf(sesion.getAttribute("sesionID")).equals(String.valueOf(sesion.getId()))) {
-			System.out.println("entra a la validacion");
-			
-			res.sendRedirect("Private/SesionUser.jsp");
-			chain.doFilter(request, response);
-		} else {
-			// System.out.println("redirect login .....");
-			res.sendRedirect("Public/HTML/inicioSesion.html");
-			
+		}else{
+			System.out.println("El fitro marica dice que la sesion no esta iniciada");
+			//((HttpServletResponse)response).sendRedirect("/publica/login.jsp");
+			request.getRequestDispatcher("/Public/HTML/inicioSesion.html").forward(request, response);
 		}
 
 	}
