@@ -12,8 +12,7 @@
 	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <!-- BOOTSTRAP -->
 
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
 
 <script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>
@@ -36,9 +35,10 @@
 	<h1>Bienvenid@ ${usuario.nombre} ${usuario.apellido}</h1>
 
 	<section>
-		<form action="/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/AgregarTelefono" method="post" name="formularioTelefonos">
+		<form action="AgregarTelefono" method="post" name="formularioTelefonos">
 	
-			<input type="hidden" value="${usuario.cedula}" id="cedula" name="num_ced"> <label for="numero">Numero:</label>
+			<input type="hidden" value="${usuario.cedula}" id="cedula" name="num_ced"> 
+			<label for="numero">Numero:</label>
 			<div class="box">
 				<div class="container-3">
 					<span class="icon"><i class="fas fa-phone fa-lg"></i></span> 
@@ -49,8 +49,8 @@
 			<br>
 	
 			<div class="boxOpr" id="selectorOperadora">
-				<label for="operadora">Operadora: </label> <select id="operadora"
-					name="operadora">
+				<label for="operadora">Operadora: </label> 
+				<select id="operadora" name="operadora">
 					<option value="movistar">MOVISTAR</option>
 					<option value="claro">CLARO</option>
 					<option value="cnt">CNT</option>
