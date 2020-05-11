@@ -42,41 +42,6 @@ public class Sesion extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
-		
-		 RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
-	        dispatcher.forward(request, response);
-		/*
-		if (email.equals("orlandojrv@hotmail.com") && password.equals("123")) {
-			out.print("<h1>Prueba</h1>");
-			if (session.isNew()) {
-				out.print("<h2>Gracias por acceder al servidor</h2>");
-				session.setAttribute("accesos", 1);
-				//response.sendRedirect("Sesion.html");
-			} else {
-				out.println("<h2>Gracias por volver " + email + "</h2>");
-				out.println("<p>Identificador de sesion: " + session.getId() + "</p>");
-				out.println("<p>Fecha de creacion: " + new Date(session.getCreationTime()) + "</p>");
-				out.println("<p>Fecha de ultimo acceso: " + new Date(session.getLastAccessedTime()) + "</p>");
-				num = (Integer) session.getAttribute("accesos");
-				out.println("<p>Accesos realizados: " + num + "</p>");
-				session.setAttribute("accesos", num + 1);		
-				session.setAttribute("usuario", email);
-				session.setAttribute("contrasena", password);
-				//response.sendRedirect("Sesion.html");
-			}
-		}else {
-			out.print("<h1>Usuario denegado</h2>");
-			out.println("<a href='index.html'>Iniciar Sesion</a></body></html>");
-		}*/
-		//out.println("</body></html>");
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	
 		String email = "";
 		String password = "";
 		
@@ -117,9 +82,10 @@ public class Sesion extends HttpServlet {
 	            System.out.println("Fecha de creacion: " + firstSession);
 				System.out.println("Fecha de ultimo acceso: " + lastSession);
 				session.setAttribute("usuario", usuario);
-				//request.getSession().setAttribute("iniciado", session);	
+				request.getSession().setAttribute("iniciado", session);	
 				request.setAttribute("usuario", usuario);
-	            request.getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
+	            //request.getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
+	            getServletContext().getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
 	            
 	        }else{
 	        	System.out.println("No encontrado");
@@ -130,6 +96,13 @@ public class Sesion extends HttpServlet {
 	            //response.sendRedirect("/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/index.html");
 	        }     
 		}
-		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);		
 	}
 }
