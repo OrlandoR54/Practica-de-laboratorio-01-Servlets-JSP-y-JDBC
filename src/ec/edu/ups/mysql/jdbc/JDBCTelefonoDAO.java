@@ -57,6 +57,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 		try {
 			if (rsTelefono != null && rsTelefono.next()) {
 				telefono = new Telefono( rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"), rsTelefono.getString("tel_operadora"));
+				telefono.setId(rsTelefono.getInt("tel_codigo"));
 				ResultSet rsUsuario=conexionDos.query("SELECT * FROM usario WHERE usu_cedula='"+rsTelefono.getString("usu_cedula")+"');");
 				if (rsUsuario !=null && rsUsuario.next()) {
 					Usuario usuario = new Usuario();
@@ -107,7 +108,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 			while (rsTelefono.next()) {
 				Telefono telefono = new Telefono(rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"),
 						rsTelefono.getString("tel_operadora"));
-//				
+				telefono.setId(rsTelefono.getInt("tel_codigo"));
 //				ResultSet rsUsuario = conexionDos.query("SELECT * FROM usuario WHERE usu_cedula='" + rsTelefono.getString("usu_cedula") + "';");
 //				if (rsUsuario != null && rsUsuario.next()) {
 //					Usuario usuario = new Usuario();
@@ -165,6 +166,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 	public Telefono findbyTelefonoId(int tel_codigo) {
 		// TODO Auto-generated method stub
 		Telefono telefono = null;
+		
 		ResultSet rsTelefono = conexionUno.query("SELECT * FROM telefono WHERE tel_codigo=" + tel_codigo + ";");
 		try {
 			if (rsTelefono != null && rsTelefono.next()) {
