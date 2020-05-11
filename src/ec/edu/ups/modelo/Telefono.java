@@ -19,9 +19,8 @@ public class Telefono implements Serializable {
 		// Constructor obligatorio
 	}
 
-	public Telefono(int id, String numero, String tipo, String operadora) {
+	public Telefono(String numero, String tipo, String operadora) {
 		super();
-		this.id = id;
 		this.numero = numero;
 		this.tipo = tipo;
 		this.operadora = operadora;
