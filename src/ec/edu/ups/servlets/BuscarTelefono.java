@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.TelefonoDAO;
+import ec.edu.ups.modelo.Telefono;
+
 /**
  * Servlet implementation class BuscarTelefono
  */
@@ -27,7 +31,22 @@ public class BuscarTelefono extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+String id_tel=request.getParameter("id_tel");
+		
+		
+		TelefonoDAO telefonoDAO=DAOFactory.getDAOFactory().getTelefonoDAO();
+		Telefono telefono = telefonoDAO.findbyTelefonoId(Integer.valueOf(id_tel));
+		
+		System.out.println("numero del telefono: "+ telefono.getNumero()+" tipo: "+telefono.getId());
+		String url = null;
+		try {
+			request.setAttribute("telefono", telefono);
+			url="/privada/editarParamTelefono.jsp";
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("ERROR SERVLET:BuscarTefono");
+		}
+		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**
