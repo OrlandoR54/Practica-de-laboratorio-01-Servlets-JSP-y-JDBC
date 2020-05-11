@@ -5,13 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Sesion</title>
 
-<!-- DATATABLES -->
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
 <!-- BOOTSTRAP -->
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
 
@@ -95,28 +94,39 @@
 	<!-- TABLA DE TELEFONOS DEL USUARIO -->
 
 	<div class="container" style="margin-top: 25px; padding: 10px">
-		<table id="tablax" class="table table-striped table-bordered" style="width: 100%">
-			<thead>
-				<th>Numero</th>
-				<th>tipo</th>
-				<th>operadora</th>
-				<th>opciones</th>
-				
-			</thead>
-			<tbody>
-				<c:forEach var="telefonos" items="${usuario.telefonos}">
-					<tr>
-						<td>${telefonos.numero}</td>
-						<td>${telefonos.tipo}</td>
-						<td>${telefonos.operadora}</td>
-						<td>
-						<a href="http://localhost:8080/Practica01/BuscarTelefono?id=${telefonos.id}">Modificar</a> <!--&correo=${usuario.correo}&contrasena=${usuario.password}  -->
-						<a href="http://localhost:8080/Practica01/EliminarTelefono?id=${telefonos.id}">Eliminar</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+		<form name="formulario_tabla" method="post">
+			<table id="tablax" class="table " style="width: 100%">
+				<thead class="thead-dark">
+					<th>Numero</th>
+					<th>tipo</th>
+					<th>operadora</th>
+					<th>opciones</th>
+				</thead>
+				<tbody>
+					<c:forEach var="telefonos" items="${usuario.telefonos}">
+						<tr>
+							<td><input type="text" placeholder="${telefonos.numero}" value="" class="tel_dato" name="tel_numero" maxlength="10"></td>
+							
+							<td><input type="text" placeholder="${telefonos.tipo}" value="" class="tel_dato" name="tel_tipo" maxlength="10"></td>
+							
+							<td><input type="text" placeholder="${telefonos.operadora}" value="" class="tel_dato" name="tel_operadora" maxlength="10"></td>
+							
+							<td>
+								<input type="hidden" value="${telefonos.id}" id="tel_id" name="tel_id">
+								<input type="submit" onclick = "this.form.action = 'ModificarTelefono'" value="Modificar" />
+								<input type="submit" onclick = "this.form.action = 'EliminarTelefono'" value="Eliminar" />
+							</td>
+						</tr>
+						<!--  <tr>
+						<td class="td_hide">${telefonos.numero}</td>
+						<td class="td_hide">${telefonos.tipo}</td>
+						<td class="td_hide">${telefonos.operadora}</td>
+						<td class="td_hide">opcion</td>
+						</tr>-->
+					</c:forEach>
+				</tbody>
+			</table>
+		</form>
 	</div>
 	
 
@@ -137,8 +147,8 @@
             $('#tablax').DataTable({
                 language: {
                     processing: "Tratamiento en curso...",
-                    search: "Buscar&nbsp;:",
-                    lengthMenu: "Agrupar de _MENU_ items",
+                    search: "",
+                    lengthMenu: "",
                     info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
                     infoEmpty: "No existen datos.",
                     infoFiltered: "(filtrado de _MAX_ elementos en total)",
