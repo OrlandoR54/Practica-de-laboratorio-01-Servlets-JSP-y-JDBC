@@ -34,7 +34,21 @@ public class AgregarTelefono extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String numero = request.getParameter("numero");
+		String tipo = request.getParameter("tipo");
+		String operadora = request.getParameter("operadora");
+		String num_ced = request.getParameter("num_ced");
+		TelefonoDAO telefonoDAO = DAOFactory.getDAOFactory().getTelefonoDAO();
+		Telefono telefono = new Telefono(numero, tipo, operadora);
+		Usuario user = DAOFactory.getDAOFactory().getUserDAO().read(String.valueOf(request.getSession().getAttribute("userID")));
+		System.out.println("Agrega Tel Usuario " + user);
+		telefono.setUsuario(user);
+		telefonoDAO.create(telefono);
+
+		System.out.println("Cedula usuario, agrega telf: " + String.valueOf(request.getSession().getAttribute("userID")));
+		getServletContext().getRequestDispatcher("/Sesion?usr=oreal%40est.ups.edu.ec&pass=Bruno.").forward(request, response);
+		//response.sendRedirect("/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/Private/SesionUser.jsp");
+		//request.getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
 	}
 
 	/**
@@ -44,19 +58,7 @@ public class AgregarTelefono extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String numero = request.getParameter("numero");
-		String tipo = request.getParameter("tipo");
-		String operadora = request.getParameter("operadora");
-
-		TelefonoDAO telefonoDAO = DAOFactory.getDAOFactory().getTelefonoDAO();
-		Telefono telefono = new Telefono(numero, tipo, operadora);
-		Usuario user = DAOFactory.getDAOFactory().getUserDAO().read(String.valueOf(request.getSession().getAttribute("userID")));
-		telefono.setUsuario(user);
-		telefonoDAO.create(telefono);
-
-		System.out.println("Cedula usuario, agrega telf: " + String.valueOf(request.getSession().getAttribute("userID")));
-		
-		response.sendRedirect("Private/SesionUser.jsp");
+		doGet(request, response);
 	}
 
 }
