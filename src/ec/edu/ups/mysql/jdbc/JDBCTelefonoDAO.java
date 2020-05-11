@@ -56,7 +56,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 		ResultSet rsTelefono = conexionUno.query("SELECT * FROM Telefono WHERE tel_numero=" + numero);
 		try {
 			if (rsTelefono != null && rsTelefono.next()) {
-				telefono = new Telefono(rsTelefono.getInt("tel_codigo"), rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"), rsTelefono.getString("tel_operadora"));
+				telefono = new Telefono( rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"), rsTelefono.getString("tel_operadora"));
 				ResultSet rsUsuario=conexionDos.query("SELECT * FROM usario WHERE usu_cedula='"+rsTelefono.getString("usu_cedula")+"');");
 				if (rsUsuario !=null && rsUsuario.next()) {
 					Usuario usuario = new Usuario();
@@ -105,7 +105,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 		ResultSet rsTelefono = conexionUno.query("SELECT * FROM telefono WHERE usu_cedula='" + cedulaUser + "';");
 		try {
 			while (rsTelefono.next()) {
-				Telefono telefono = new Telefono(rsTelefono.getInt("tel_codigo"),rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"),
+				Telefono telefono = new Telefono(rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"),
 						rsTelefono.getString("tel_operadora"));
 //				
 //				ResultSet rsUsuario = conexionDos.query("SELECT * FROM usuario WHERE usu_cedula='" + rsTelefono.getString("usu_cedula") + "';");
@@ -137,7 +137,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 		ResultSet rsTelefono = conexionUno.query("SELECT * FROM telefono;");
 		try {
 			while (rsTelefono.next()) {
-				Telefono telefono = new Telefono(rsTelefono.getInt("tel_codigo"),rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"),
+				Telefono telefono = new Telefono(rsTelefono.getString("tel_numero"), rsTelefono.getString("tel_tipo"),
 						rsTelefono.getString("tel_operadora"));
 				ResultSet rsUsuario = conexionDos.query("SELECT * FROM usuario WHERE usu_cedula='" + rsTelefono.getString("usu_cedula") + "';");
 				if (rsUsuario != null && rsUsuario.next()) {
@@ -168,7 +168,7 @@ public class JDBCTelefonoDAO extends JDBCGenericDAO<Telefono, String> implements
 		ResultSet rsTelefono = conexionUno.query("SELECT * FROM telefono WHERE tel_codigo=" + tel_codigo + ";");
 		try {
 			if (rsTelefono != null && rsTelefono.next()) {
-				telefono = new Telefono(rsTelefono.getInt("tel_codigo"), rsTelefono.getString("tel_numero"),
+				telefono = new Telefono( rsTelefono.getString("tel_numero"),
 						rsTelefono.getString("tel_tipo"), rsTelefono.getString("tel_operadora"));
 			}
 		} catch (SQLException e) {
