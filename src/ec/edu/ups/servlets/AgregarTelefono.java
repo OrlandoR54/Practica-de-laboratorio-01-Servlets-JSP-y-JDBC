@@ -44,9 +44,11 @@ public class AgregarTelefono extends HttpServlet {
 		System.out.println("Agrega Tel Usuario " + user);
 		telefono.setUsuario(user);
 		telefonoDAO.create(telefono);
-
+		
 		System.out.println("Cedula usuario, agrega telf: " + String.valueOf(request.getSession().getAttribute("userID")));
-		getServletContext().getRequestDispatcher("/Sesion?usr=oreal%40est.ups.edu.ec&pass=Bruno.").forward(request, response);
+		String url = "/Sesion?usr=" + user.getCorreo() + "&pass=" + user.getPassword();
+		System.out.println("URL" + url);
+		getServletContext().getRequestDispatcher(url).forward(request, response);
 		//response.sendRedirect("/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/Private/SesionUser.jsp");
 		//request.getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
 	}
