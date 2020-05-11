@@ -1,5 +1,5 @@
 body {
-	background: #343d46;
+	/*background: #343d46;*/
 }
 
 .container-3{
@@ -91,3 +91,21 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
 }
+/*----------------------------------------------------------------------------*/
+/*<---------------------------------TABLA--------------------------------->*/
+.tel_dato::placeholder {
+ color: black; 
+ font-weight: bold;
+}
+
+.tel_dato {
+	border: none;
+}
+
+input.form-control.form-control-sm {
+	visibility: hidden;
+}
+/*
+td.td_hide{
+	visibility: hidden;
+}*/
