@@ -117,7 +117,8 @@ public class Sesion extends HttpServlet {
 	            System.out.println("Fecha de creacion: " + firstSession);
 				System.out.println("Fecha de ultimo acceso: " + lastSession);
 				session.setAttribute("usuario", usuario);
-	            
+				//request.getSession().setAttribute("iniciado", session);	
+				request.setAttribute("usuario", usuario);
 	            request.getRequestDispatcher("/Private/SesionUser.jsp").forward(request, response);
 	            
 	        }else{
