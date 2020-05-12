@@ -48,7 +48,7 @@ public class FiltroSesion implements Filter {
 			System.out.println("entra a la validacion de FILTRO");
 			chain.doFilter(request, response);
 		}else{
-			System.out.println("El fitro marica dice que la sesion no esta iniciada");
+
 			//((HttpServletResponse)response).sendRedirect("/publica/login.jsp");
 			request.getRequestDispatcher("/Public/HTML/inicioSesion.html").forward(request, response);
 		}
