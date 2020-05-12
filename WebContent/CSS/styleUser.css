@@ -1,58 +1,96 @@
 body {
-	background: #5500E2;
+	background: #F0F4EF;
 }
 
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.navbar .icon-brand{
+   font-size: 25px; /*Tamanio del icono*/
+ 
 }
 
 
+.content-tittle{
+	width: 900px;
+	margin: 30px 230px;
+	margin-top: 60px;
+}
+
+.content-tittle h1{
+	width: 100%;
+}
+
+.container{
+	width: 90%;
+	margin: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background: #F49336;
+}
+
+.opc{
+	display: flex;
+}
+
+
+.content-btn{
+	width: 100%;
+	text-align:center;
+	height: 50px;
+}
+
+.btn-telf{
+	height:50px; 
+    width:190px; 
+    margin: -20px -50px; 
+    
+    top:50%; 
+    left:50%;	
+    border-radius: 10px;
+}
+
+.btn-bus-telf {
+	height:50px; 
+    width:190px; 
+    margin-left: 10px;
+    
+    top:50%; 
+    left:50%;	
+    border-radius: 10px;
+}
+
+.form-bus{
+	margin-bottom: 10px;
+}
+
+.content-num{
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+.container-bus{
+	width: 95%;
+	margin: auto;
+	padding: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background: #F49336;	
+}
+
+label.lbl-num{
+	padding-top: 10px;
+	padding-right: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
 
 /*-----------------------INPUTS------------------------*/
 .container-3{
-  width: 200px;
+  width: 900px;
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
 }
  
 .container-3 input#phone{
-  width: 200px;
+  width: 800px;
   height: 50px;
   background: #2b303b;
   border: none;
