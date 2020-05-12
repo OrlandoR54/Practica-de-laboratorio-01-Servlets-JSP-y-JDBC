@@ -44,14 +44,19 @@ public class ModificarTelefono extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String numero = request.getParameter("tel_numero");
-        String tipo = request.getParameter("tel_tipo");
-        String operadora = request.getParameter("tel_operadora");
+		String numero = request.getParameter("numero");
+        String tipo = request.getParameter("tipo");
+        String operadora = request.getParameter("operadora");
         String idTelefono = request.getParameter("tel_id");
         
         TelefonoDAO telefonoDAO = DAOFactory.getDAOFactory().getTelefonoDAO();
         Telefono telefono = telefonoDAO.findbyTelefonoId(Integer.parseInt(idTelefono));
        
+        System.err.println("Numero tel: " + numero);
+        System.err.println("tipo tel: " + tipo);
+        System.err.println("Operadora tel: " + operadora);
+        
+        
         Usuario user = DAOFactory.getDAOFactory().getUserDAO().read(String.valueOf(request.getSession().getAttribute("userID")));
         telefono.setUsuario(user);
         telefono.setNumero(numero);
