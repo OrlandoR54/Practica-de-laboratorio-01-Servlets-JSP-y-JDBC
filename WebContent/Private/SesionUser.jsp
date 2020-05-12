@@ -14,12 +14,16 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+
 <script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="CSS/styleUser.css" type="text/css">
 
 </head>
 <body>
-	<nav id="mySidenav" class="sidenav">
+	<nav>
 		<ul>
 			<li>
 				<a href="">Nuevo Telefono</a>
@@ -114,10 +118,12 @@
 		<form name="formulario_tabla" method="post">
 			<table id="tablax" class="table " style="width: 100%">
 				<thead class="thead-dark">
+				<tr>
 					<th>Numero</th>
 					<th>tipo</th>
 					<th>operadora</th>
 					<th>opciones</th>
+				</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="telefonos" items="${usuario.telefonos}">
@@ -147,48 +153,7 @@
 	</div>
 	
 <!----------------------------------------------------------------->
-<!-- TABLA DE TELEFONOS DE USUARIOS -->
-
-<div class="container" style="margin-top: 25px; padding: 10px">
-		<h2>Agenda Telefonica</h2>
-		<form name="formulario_tabla_usuarios" action="BuscarUsuarios" method="get">
-			<div class="box">
-				<div class="container-3">
-					<span class="icon"><i class="far fa-address-book"></i></span> 
-					<input type="search" id="phone" name="busquedaUser" placeholder="Buscar usuario..."  required />
-				</div>
-			</div>
-			<button type="submit">Buscar</button>
-			<table id="tabla_Usuarios" class="table " style="width: 100%">
-				<thead class="thead-dark">
-					<tr>
-						<th>Numero</th>
-						<th>tipo</th>
-						<th>operadora</th>
-						<th>opciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="telefonos" items="${usuario.telefonos}">
-						<tr>
-							<td><input type="text" placeholder="${telefonos.numero}" value="" class="tel_dato" name="tel_numero" maxlength="10"></td>
-							
-							<td><input type="text" placeholder="${telefonos.tipo}" value="" class="tel_dato" name="tel_tipo" maxlength="10"></td>
-							
-							<td><input type="text" placeholder="${telefonos.operadora}" value="" class="tel_dato" name="tel_operadora" maxlength="10"></td>
-							
-							<td>
-								<input type="hidden" value="${telefonos.id}" id="tel_id" name="tel_id">
-								<!--  <input type="submit" onclick = "this.form.action = ''" value="Modificar" />
-								<input type="submit" onclick = "this.form.action = ''" value="Eliminar" />-->
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</form>
-	</div>
-
+<dsp:iframe src="Busqueda.jsp" />
 
 <script>
 function openNav() {
@@ -199,8 +164,14 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 </script>
-
-
+<!--  
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+      -->  
+        
+        
 
 	<!-- JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
