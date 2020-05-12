@@ -40,18 +40,19 @@ public class BuscarUsuarios extends HttpServlet {
 		
 		List<Usuario> users = usuarioDAO.findByIdOrMail(context);
 		request.setAttribute("users", users);
-		Usuario user = DAOFactory.getDAOFactory().getUserDAO().read(String.valueOf(request.getSession().getAttribute("userID")));
+		
+		//Usuario user = DAOFactory.getDAOFactory().getUserDAO().read(String.valueOf(request.getSession().getAttribute("userID")));
         
 		System.out.println("Tamano lista User: " + users.size());
 		
 		System.out.println("RecuperaBusqueda: " + context);
 		System.err.println(users);
 		
-		String url = "/Sesion?usr=" + user.getCorreo() + "&pass=" + user.getPassword();
-		System.out.println("URL" + url);
+		//String url = "/Sesion?usr=" + user.getCorreo() + "&pass=" + user.getPassword();
+		//System.out.println("URL" + url);
 		getServletContext().getRequestDispatcher("/Private/Busqueda.jsp").forward(request, response);
 		//getServletContext().getRequestDispatcher(url).forward(request, response);
-		//request.getRequestDispatcher("/SesionUser.jsp").forward(request, response);
+		//request.getRequestDispatcher("/Private/Busqueda.jsp").forward(request, response);
 	}
 
 	/**
