@@ -14,112 +14,125 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="public/css/styles.css">        
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="public/css/styles.css">        
 
 <script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="CSS/styleUser.css" type="text/css">
 
 </head>
 <body>
-	<nav>
-		<ul>
-			<li>
-				<a href="#primero">Nuevo Telefono</a>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#"><span class="icon icon-brand"><i class="far fa-address-book"></i></span>Agenda Telefonica</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#primero">Nuevo Telefono</a>
 			</li>
 		
-			<li>
-				<a href="#segundo">Buscar mis numeros</a>
+			<li class="nav-item">
+				<a class="nav-link" href="#segundo">Buscar mis numeros</a>
 			</li>
 			<li>
-				<a href="tercero">Modificar o Eliminar mis Numeros</a>
+				<a class="nav-link" href="#tercero">Modificar o Eliminar mis Numeros</a>
 			</li>
 		</ul>
-		<ul>
-			<li>
-				<a href="/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/CerrarSesion"><i class="fas fa-sign-out-alt"></i>Cerrar Sesion</a>
+		<ul form-inline my-2 my-lg-0>
+			<li class="nav-item">
+				<a class="navbar-brand" href="/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/CerrarSesion"><i class="fas fa-sign-out-alt"></i>Cerrar Sesion</a>
 			</li>
 		</ul>
 	</nav>
+	
+	
 	<c:set var="usuario" value="${requestScope['usuario']}" />
-	<h1>Bienvenid@ ${usuario.nombre} ${usuario.apellido}</h1>
-
 	<section id="primero">
-		<form action="AgregarTelefono" method="post" name="formularioTelefonos">
-	
-			<input type="hidden" value="${usuario.cedula}" id="cedula" name="num_ced"> 
-			<label for="numero">Numero:</label>
-			<div class="box">
-				<div class="container-3">
-					<span class="icon"><i class="fas fa-phone fa-lg"></i></span> 
-					<input type="text" id="phone" name="numero" placeholder="0955572141" maxlength="10" required />
+		<div class="container">
+			<div class="content-tittle">
+				<h1>Bienvenid@ ${usuario.nombre} ${usuario.apellido}</h1>
+			</div>
+		
+			<form action="AgregarTelefono" method="post" name="formularioTelefonos">
+		
+				<input type="hidden" value="${usuario.cedula}" id="cedula" name="num_ced"> 
+				<div class="content-num">
+					<label class="lbl-num">Numero:</label>
+					<div class="box">
+						<div class="container-3">
+							<span class="icon"><i class="fas fa-phone fa-lg"></i></span> 
+							<input type="text" id="phone" name="numero" placeholder="0955572141" maxlength="10" required />
+						</div>
+					</div>
 				</div>
-			</div>
+				
+				
+				<div class="opc">
+					<div class="boxOpr" id="selectorOperadora">
+						<label class="lbl-num" for="operadora">Operadora: </label> 
+						<select id="operadora" name="operadora">
+							<option value="movistar">MOVISTAR</option>
+							<option value="claro">CLARO</option>
+							<option value="cnt">CNT</option>
+							<option value="tuenti">TUENTI</option>
+						</select>
+					</div>
+					
 			
-			<br>
-	
-			<div class="boxOpr" id="selectorOperadora">
-				<label for="operadora">Operadora: </label> 
-				<select id="operadora" name="operadora">
-					<option value="movistar">MOVISTAR</option>
-					<option value="claro">CLARO</option>
-					<option value="cnt">CNT</option>
-					<option value="tuenti">TUENTI</option>
-				</select>
-			</div>
-			<br>
-	
-			<div id="selectorTipo">
-				<label for="tipo">Tipo: </label> <select id="tipo" name="tipo">
-					<option value="movil">MOVIL</option>
-					<option value="fijo">CONVENCIONAL</option>
-				</select>
-			</div>
-			<br> <br>
-			<button class="" id="Registrarce" type="submit">Registrar nuevo telefono</button>
-	
-		</form>
+					<div id="selectorTipo">
+						<label class="lbl-num" for="tipo">Tipo: </label> <select id="tipo" name="tipo">
+							<option value="movil">MOVIL</option>
+							<option value="fijo">CONVENCIONAL</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="content-btn">
+					<button class="btn-telf btn btn-primary" id="Registrarce" type="submit">Registrar nuevo telefono</button>
+				</div>
+			</form>
+		</div>
 	</section>
 	
 	<hr class="new4">
 	
 	<section id="#segundo">
 		<!--BUSCA EL TELEFONO DEL USUARIO-->
-		<form action="BuscarTelefono" method="post" name="buscarUsuariosCedCorr">
-			<h2>Buscar mis números de telefono</h2>
-			<label for="criterio">Buscar mi número de telefono:</label>
-			<div class="box">
-				<div class="container-3">
-					<span class="icon"><i class="fas fa-tty"></i></span> 
-					<input type="text" id="phone" name="numTelf" placeholder="Buscar numero..." maxlength="10" required />
+		<div class="container-bus">
+			<form class="form-bus" action="BuscarTelefono" method="post" name="buscarUsuariosCedCorr">
+				<h2>Buscar mis números de telefono</h2>
+				<label for="criterio">Buscar mi número de telefono:</label>
+				<div class="box">
+					<div class="container-3">
+						<span class="icon"><i class="fas fa-tty"></i></span> 
+						<input type="text" id="phone" name="numTelf" placeholder="Buscar numero..." maxlength="10" required />
+					</div>
 				</div>
-			</div>
+			
+			
+				<button class="btn-bus-telf btn btn-primary" type="submit">Buscar</button>
 		
-			<br>
-			<button type="submit">Buscar</button>
-	
-		</form>
+			</form>
+			
+			<table class="table ">
+				<thead class="thead-dark">
+					<tr>
+						<th>Numero</th>
+						<th>tipo</th>
+						<th>operadora</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:set var="bTelefono" value="${requestScope['telefono']}" />
+					<tr>
+						<td><c:out value="${bTelefono.numero}" /></td>
+						<td><c:out value="${bTelefono.tipo}" /></td>
+						<td><c:out value="${bTelefono.operadora}" /></td>
+					</tr>
 		
-		<table class="table ">
-			<thead class="thead-dark">
-				<tr>
-					<th>Numero</th>
-					<th>tipo</th>
-					<th>operadora</th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:set var="bTelefono" value="${requestScope['telefono']}" />
-				<tr>
-					<td><c:out value="${bTelefono.numero}" /></td>
-					<td><c:out value="${bTelefono.tipo}" /></td>
-					<td><c:out value="${bTelefono.operadora}" /></td>
-				</tr>
-	
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
 	</section>
 	
 	<hr class="new4">
