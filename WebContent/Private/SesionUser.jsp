@@ -153,7 +153,7 @@
 	</div>
 	
 <!----------------------------------------------------------------->
-<dsp:iframe src="Busqueda.jsp" />
+
 
 <script>
 function openNav() {
