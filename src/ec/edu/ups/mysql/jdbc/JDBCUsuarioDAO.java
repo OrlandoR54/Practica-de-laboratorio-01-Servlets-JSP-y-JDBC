@@ -193,42 +193,40 @@ public class JDBCUsuarioDAO extends JDBCGenericDAO<Usuario, String> implements U
 	}
 
 	@Override
-	public List<Usuario> findByIdOrMail(String context) {
-		// TODO Auto-generated method stub
-		List<Usuario> users = new ArrayList<>();
-		if (context.equals("all")) {
-			ResultSet rs = conexionUno.query("SELECT * FROM usuario;");
-			try {
-				if (rs != null && rs.next()) {
-					Usuario user = new Usuario(rs.getString("usu_cedula"), rs.getString("usu_nombre"),
-							rs.getString("usu_apellido"), rs.getString("usu_correo"), rs.getString("usu_contrasena"));
-					Set<Telefono> telefonos = DAOFactory.getDAOFactory().getTelefonoDAO()
-							.findByUserId(user.getCedula());
-					user.setTelefonos(telefonos);
-					users.add(user);
-				}
-			} catch (SQLException e) {
-				System.out.println(">>>WARNING (JDBCUserDAO:findByIdOrMail): " + e.getMessage());
-			}
-			System.out.println("Todos los usuarios....." + users.toString());
-		} else {
-			ResultSet rs = conexionUno.query("SELECT * FROM usuario " + "WHERE usu_cedula = '" + context
-					+ "' OR usu_correo = '" + context + "';");
-			try {
-				if (rs != null && rs.next()) {
-					Usuario user = new Usuario(rs.getString("usu_cedula"), rs.getString("usu_nombre"),
-							rs.getString("usu_apellido"), rs.getString("usu_correo"), rs.getString("usu_contrasena"));
-					Set<Telefono> telefonos = DAOFactory.getDAOFactory().getTelefonoDAO()
-							.findByUserId(user.getCedula());
-					user.setTelefonos(telefonos);
-					users.add(user);
-				}
-			} catch (SQLException e) {
-				System.out.println(">>>WARNING (JDBCUserDAO:findByIdOrMail): " + e.getMessage());
-			}
-		}
+	 public List<Usuario> findByIdOrMail(String context) {
+        List<Usuario> users = new ArrayList<>();
+        if (context.equals("all")) {
+            ResultSet rs = conexionUno.query("SELECT * FROM usuario;");
+            try {
 
-		return users;
-	}
+                while (rs.next()) {
+                    Usuario user = new Usuario(rs.getString("usu_cedula"), rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_correo"), rs.getString("usu_contrasena"));
+                    Set<Telefono> telefonos = DAOFactory.getDAOFactory().getTelefonoDAO().findByUserId(user.getCedula());
+                    user.setTelefonos(telefonos);
+                    
+                    users.add(user);
+                }
+
+            } catch (SQLException e) {
+                System.out.println(">>>WARNING (JDBCUserDAO:findByIdOrMail): " + e.getMessage());
+            }
+
+        } else {
+            ResultSet rs = conexionUno.query("SELECT * FROM usuario " + "WHERE usu_cedula = '" + context + "' OR usu_correo = '" + context + "';");
+            try {
+                if (rs != null && rs.next()) {
+                    Usuario user = new Usuario(rs.getString("usu_cedula"), rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_correo"), rs.getString("usu_contrasena"));
+                    Set<Telefono> telefonos = DAOFactory.getDAOFactory().getTelefonoDAO().findByUserId(user.getCedula());
+                    user.setTelefonos(telefonos);
+                    //System.out.println("Todos los usuarios por correo....." +context+" con nombre"+ user.getNombre());
+                    users.add(user);
+                }
+            } catch (SQLException e) {
+                System.out.println(">>>WARNING (JDBCUserDAO:findByIdOrMail): " + e.getMessage());
+            }
+        }
+
+        return users;
+    }
 
 }
