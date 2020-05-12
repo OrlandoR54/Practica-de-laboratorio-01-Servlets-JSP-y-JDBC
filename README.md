@@ -35,7 +35,7 @@
 
 
 
-](img/2.png)
+![](img/2.png)
 
 
 
@@ -63,7 +63,7 @@
 
 
 
-](img/3.png)
+![](img/3.png)
 
 
 
@@ -86,7 +86,7 @@
 
 
 
-](img/4.png)
+![](img/4.png)
 
 
 
@@ -95,7 +95,7 @@
 ##### •	El usuario puede buscar un número de teléfono en especifico
 
 
-
+![](img/5.png)
 
 
 
@@ -113,7 +113,7 @@
 
 
 
-
+![](img/6.png)
 
 
 
@@ -126,7 +126,7 @@
 
 ##### •	Muestra el usuario por su numero de cedula o correo
 
-
+![](img/7.png)
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-
+![](img/8.png)
 
 
 
