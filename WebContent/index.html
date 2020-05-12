@@ -30,16 +30,18 @@
 					<li><a href="#">Projects</a></li>
 					<li>
 						<div class="content">
-							<div class="animacion" id="animacion">
-								<div class="box">
-									<div class="container-4">
-										<input type="search" id="search" onkeyup="url()" placeholder="Buscar..." />
-										<button type="submit" class="icon" onclick="apiCall(1)">
-											<i class="fa fa-search"></i>
-										</button>
+							<form action="BuscarUsuarios" method="get">
+								<div class="animacion" id="animacion">
+									<div class="box">
+										<div class="container-4">
+											<input type="search" id="search" name="busquedaUser" placeholder="Buscar..." />
+											<button type="submit" class="icon" onclick="apiCall(1)">
+												<i class="fa fa-search"></i>
+											</button>
+										</div>
 									</div>
 								</div>
-							</div>
+							</form>	
 						</div>
 					</li>
 				</ul>
@@ -51,8 +53,15 @@
 	</nav>
 	
 	
+	<iframe height="700px" width="100%" src="http://localhost:8080/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/Private/Busqueda.jsp"></iframe>
 	
 	
+	<script type="text/javascript">
+	function myFunction() {
+		location.reload();
+		}
+	
+	</script>
 	
 </body>
 </html>
