@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 <!--  BOOSTRAP  -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      
+     
 <!-- FONTAWESOME -->
 <script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>        
 
@@ -18,9 +20,8 @@
 <c:set var = "users" value = "${requestScope['users']}" />
 
 	<!-- TABLA DE TELEFONOS DE USUARIOS -->
-
+<!-- 
 	<div class="container" style="margin-top: 25px; padding: 10px">
-		<h2>Agenda Telefonica</h2>
 		<form name="formulario_tabla_usuarios" action="../BuscarUsuarios" method="post">
 			<div class="box">
 				<div class="container-3">
@@ -30,7 +31,7 @@
 			</div>
 			<button type="submit">Buscar</button>
 		</form>
-		
+		 -->
 
 		
 		<div class="ui container">
@@ -101,7 +102,7 @@
                     </table>
                 </c:when>    
                	<c:otherwise>
-                    <h1>No hay contactos para esta busqueda</h1>
+                  <!--   <h1>No hay contactos para esta busqueda</h1> -->
                 </c:otherwise>
             </c:choose>
         </div>
@@ -110,7 +111,7 @@
 
 <script>
 function myFunction() {
-  location.replace("http://localhost:8080/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/Private/Busqueda.jsp")
+  location.replace("http://localhost:8080/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/index.html")
 }
 </script>
 
