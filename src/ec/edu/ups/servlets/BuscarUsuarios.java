@@ -40,31 +40,18 @@ public class BuscarUsuarios extends HttpServlet {
 		
 		List<Usuario> users = usuarioDAO.findByIdOrMail(context);
 		request.setAttribute("users", users);
+		Usuario user = DAOFactory.getDAOFactory().getUserDAO().read(String.valueOf(request.getSession().getAttribute("userID")));
+        
+		System.out.println("Tamano lista User: " + users.size());
 		
-		Usuario usuario = null;	
-		System.err.println(busquedaUser);
-		if (busquedaUser.contains("@")) {
-			System.err.println("es correo");
-			System.out.println(busquedaUser);
-			usuario = usuarioDAO.findByCorreo(busquedaUser);
-			
-			telefonos = usuario.getTelefonos();
-			for (Telefono telefono : telefonos) {
-				System.out.println("tel: " + telefono.getNumero());
-			}
-		} else if (busquedaUser.matches("[0-9]+") && busquedaUser.length() == 10) {
-			System.out.println("cedula valida");
-			System.out.println(busquedaUser);
-			usuario = usuarioDAO.read(busquedaUser);
-			
-			telefonos = usuario.getTelefonos();
-			for (Telefono telefono : telefonos) {
-				System.out.println("tel: " + telefono.getNumero());
-			}
-		} else {
-			System.out.println("ERROR correo no valido o numero de cedula contiene caracteres");
-			
-		}
+		System.out.println("RecuperaBusqueda: " + context);
+		System.err.println(users);
+		
+		String url = "/Sesion?usr=" + user.getCorreo() + "&pass=" + user.getPassword();
+		System.out.println("URL" + url);
+		getServletContext().getRequestDispatcher("/Private/Busqueda.jsp").forward(request, response);
+		//getServletContext().getRequestDispatcher(url).forward(request, response);
+		//request.getRequestDispatcher("/SesionUser.jsp").forward(request, response);
 	}
 
 	/**
