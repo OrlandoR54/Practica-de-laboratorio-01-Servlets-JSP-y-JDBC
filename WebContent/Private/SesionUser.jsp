@@ -75,7 +75,7 @@
 		</form>
 	</section>
 	<!--BUSCA EL TELEFONO DEL USUARIO-->
-	<h1>-----------------------------------------------------------------</h1>
+	<hr class="new4">
 	<form action="BuscarTelefono" method="post" name="buscarUsuariosCedCorr">
 		<h2>Buscar mis números de telefono</h2>
 		<label for="criterio">Buscar mi número de telefono:</label>
@@ -109,13 +109,13 @@
 
 		</tbody>
 	</table>
-	<h1>------------------------------------------------------</h1>
+	<hr class="new4">
 	<!---------------------------------------------------------------->
 
 	<!-- TABLA DE TELEFONOS DEL USUARIO -->
 
 	<div class="container" style="margin-top: 25px; padding: 10px">
-		<form name="formulario_tabla" method="post">
+		<form name="formulario_tabla" action="" method="post">
 			<table id="tablax" class="table " style="width: 100%">
 				<thead class="thead-dark">
 				<tr>
@@ -128,14 +128,14 @@
 				<tbody>
 					<c:forEach var="telefonos" items="${usuario.telefonos}">
 						<tr>
-							<td><input type="text" placeholder="${telefonos.numero}" value="" class="tel_dato" name="tel_numero" maxlength="10"></td>
+							<td><input type="text" placeholder="${telefonos.numero}" class="tel_dato" name="tel_numero" maxlength="10"></td>
 							
-							<td><input type="text" placeholder="${telefonos.tipo}" value="" class="tel_dato" name="tel_tipo" maxlength="10"></td>
+							<td><input type="text" placeholder="${telefonos.tipo}"  class="tel_dato" name="tel_tipo" maxlength="10"></td>
 							
-							<td><input type="text" placeholder="${telefonos.operadora}" value="" class="tel_dato" name="tel_operadora" maxlength="10"></td>
+							<td><input type="text" placeholder="${telefonos.operadora}"  class="tel_dato" name="tel_operadora" maxlength="10"></td>
 							
 							<td>
-								<input type="hidden" value="${telefonos.id}" id="tel_id" name="tel_id">
+								<input type="text" value="${telefonos.id}" id="tel_id" readonly name="tel_id">
 								<input type="submit" onclick = "this.form.action = 'ModificarTelefono'" value="Modificar" />
 								<input type="submit" onclick = "this.form.action = 'EliminarTelefono'" value="Eliminar" />
 							</td>
