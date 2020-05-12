@@ -16,9 +16,10 @@
 
 <script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="CSS/styleUser.css" type="text/css">
+
 </head>
 <body>
-	<nav>
+	<nav id="mySidenav" class="sidenav">
 		<ul>
 			<li>
 				<a href="">Nuevo Telefono</a>
@@ -61,35 +62,51 @@
 			<div id="selectorTipo">
 				<label for="tipo">Tipo: </label> <select id="tipo" name="tipo">
 					<option value="movil">MOVIL</option>
-					<option value="fijo">FIJO</option>
+					<option value="fijo">CONVENCIONAL</option>
 				</select>
 			</div>
 			<br> <br>
-			<button class="btn btn-lg btn-primary btn-block btn-signin"
-				id="Registrarce" type="submit">Registrar nuevo telefono</button>
+			<button class="" id="Registrarce" type="submit">Registrar nuevo telefono</button>
 	
 		</form>
 	</section>
-	<!--INICIO BUSCAR A OTROS USUARIOS EN BASE A SU NUMERO DE CEDULA O CORREO-->
-	<h1>------------------------------------------------------</h1>
-	<form action="BuscarOtherUsuarios" method="post"
-		name="buscarUsuariosCedCorr">
-		<h1>Ingresa un num de celuda o correo</h1>
-		<div class="input-group input-group-lg">
-			<label for="criterio">Buscar a otros Usuarios:</label> <span
-				class="input-group-addon" id="sizing-addon1"><i
-				class="glyphicon glyphicon-envelope"></i></span> <input type="text"
-				class="form-control" name="criterio"
-				placeholder="Ingresa un numero de celuda o correo" id="criterio"
-				aria-describedby="sizing-addon1" required>
+	<!--BUSCA EL TELEFONO DEL USUARIO-->
+	<h1>-----------------------------------------------------------------</h1>
+	<form action="BuscarTelefono" method="post" name="buscarUsuariosCedCorr">
+		<h2>Buscar mis números de telefono</h2>
+		<label for="criterio">Buscar mi número de telefono:</label>
+		<div class="box">
+			<div class="container-3">
+				<span class="icon"><i class="fas fa-tty"></i></span> 
+				<input type="text" id="phone" name="numTelf" placeholder="Buscar numero..." maxlength="10" required />
+			</div>
 		</div>
+	
 		<br>
-		<button class="btn btn-lg btn-primary btn-block btn-signin"
-			id="Registrarce" type="submit">Buscar</button>
+		<button type="submit">Buscar</button>
 
 	</form>
+	
+	<table class="table ">
+		<thead class="thead-dark">
+			<tr>
+				<th>Numero</th>
+				<th>tipo</th>
+				<th>operadora</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:set var="bTelefono" value="${requestScope['telefono']}" />
+			<tr>
+				<td><c:out value="${bTelefono.numero}" /></td>
+				<td><c:out value="${bTelefono.tipo}" /></td>
+				<td><c:out value="${bTelefono.operadora}" /></td>
+			</tr>
+
+		</tbody>
+	</table>
 	<h1>------------------------------------------------------</h1>
-	<!-- FIN DE BUSCAR A USUARIOS CON SU NUMERO DE CEDULA O CORREO -->
+	<!---------------------------------------------------------------->
 
 	<!-- TABLA DE TELEFONOS DEL USUARIO -->
 
@@ -129,6 +146,61 @@
 		</form>
 	</div>
 	
+<!----------------------------------------------------------------->
+<!-- TABLA DE TELEFONOS DE USUARIOS -->
+
+<div class="container" style="margin-top: 25px; padding: 10px">
+		<h2>Agenda Telefonica</h2>
+		<form name="formulario_tabla_usuarios" action="BuscarUsuarios" method="get">
+			<div class="box">
+				<div class="container-3">
+					<span class="icon"><i class="far fa-address-book"></i></span> 
+					<input type="search" id="phone" name="busquedaUser" placeholder="Buscar usuario..."  required />
+				</div>
+			</div>
+			<button type="submit">Buscar</button>
+			<table id="tabla_Usuarios" class="table " style="width: 100%">
+				<thead class="thead-dark">
+					<tr>
+						<th>Numero</th>
+						<th>tipo</th>
+						<th>operadora</th>
+						<th>opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="telefonos" items="${usuario.telefonos}">
+						<tr>
+							<td><input type="text" placeholder="${telefonos.numero}" value="" class="tel_dato" name="tel_numero" maxlength="10"></td>
+							
+							<td><input type="text" placeholder="${telefonos.tipo}" value="" class="tel_dato" name="tel_tipo" maxlength="10"></td>
+							
+							<td><input type="text" placeholder="${telefonos.operadora}" value="" class="tel_dato" name="tel_operadora" maxlength="10"></td>
+							
+							<td>
+								<input type="hidden" value="${telefonos.id}" id="tel_id" name="tel_id">
+								<!--  <input type="submit" onclick = "this.form.action = ''" value="Modificar" />
+								<input type="submit" onclick = "this.form.action = ''" value="Eliminar" />-->
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</form>
+	</div>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+
 
 	<!-- JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -173,7 +245,36 @@
         });
     </script>
 
-
+<script>
+        $(document).ready(function () {
+            $('#tabla_Usuarios').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "",
+                    lengthMenu: "",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+            });
+        });
+    </script>
 	
 </body>
 </html>
