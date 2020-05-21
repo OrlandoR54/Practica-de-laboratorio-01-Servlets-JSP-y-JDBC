@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Inicio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -55,12 +55,19 @@
 	
 	<iframe height="700px" width="100%" src="http://localhost:8080/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/Private/Busqueda.jsp"></iframe>
 	
-	
+	<!-- <img class="img-fluid" alt="" src="IMG/talk1.jpg">  -->
 	<script type="text/javascript">
-	function myFunction() {
-		location.reload();
-		}
-	
+
+	$(document).ready(function(){
+		$("#mostrar").on( "click", function() {
+			$('#target').show(); //muestro mediante id
+			$('.target').show(); //muestro mediante clase
+		 });
+		$("#ocultar").on( "click", function() {
+			$('#target').hide(); //oculto mediante id
+			$('.target').hide(); //muestro mediante clase
+		});
+	});
 	</script>
 	
 </body>
