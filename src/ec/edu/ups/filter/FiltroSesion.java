@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FiltroSesion
  */
-@WebFilter(urlPatterns = {"/Private/*"})
+@WebFilter(urlPatterns = {"/Private/ModificarTelefono", "/Private/SesionUser"})
 public class FiltroSesion implements Filter {
 
 	/**
