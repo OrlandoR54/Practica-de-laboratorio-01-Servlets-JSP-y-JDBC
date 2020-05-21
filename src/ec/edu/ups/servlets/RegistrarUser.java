@@ -58,7 +58,11 @@ public class RegistrarUser extends HttpServlet {
             response.sendRedirect("Public/HTML/inicioSesion.html"); 
             System.out.println("Usuario Creado");
             System.out.println("nombres: "+ nombres +" apellidos: " + apellidos + " cedula: " + cedula + " email: " + email + " password: " + password);
-                       
+            out.println("<script type='text/javascript'>");
+        	out.println("alert('Usuario creado');");
+        	out.println("location='/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC/Public/HTML/inicioSesion.html';");
+        	out.println("</script>");
+//            request.getRequestDispatcher("/Public/HTML/inicioSesion.html").forward(request, response);           
 		}else{
             System.out.println("Usuario No Creado");
             out.println("<script type='text/javascript'>");
