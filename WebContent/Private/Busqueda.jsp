@@ -12,7 +12,13 @@
       
      
 <!-- FONTAWESOME -->
-<script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>        
+<script src="https://kit.fontawesome.com/3f81fb8d3b.js" crossorigin="anonymous"></script>  
+<style type="text/css">
+	body{
+	background: #ABC4AB;
+}
+	
+</style>      
 
 </head>
 <body>
@@ -103,6 +109,7 @@
                 </c:when>    
                	<c:otherwise>
                   <!--   <h1>No hay contactos para esta busqueda</h1> -->
+                   <img class="img-fluid" alt="" src="../IMG/talk1.jpg">
                 </c:otherwise>
             </c:choose>
         </div>
